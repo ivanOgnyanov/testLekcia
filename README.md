@@ -73,13 +73,20 @@ php artisan key:generate
 ### 5. База данни
 
 Проектът използва SQLite - цялата база е един файл `database/database.sqlite`. Той не се качва
-в GitHub, затова се създава при миграцията:
+в GitHub, затова първо се създава празен файл, а след това се създават таблиците:
+
+```bash
+# Windows (cmd)
+type nul > database\database.sqlite
+
+# Linux / macOS / Git Bash
+touch database/database.sqlite
+```
 
 ```bash
 php artisan migrate --seed
 ```
 
-На въпроса дали да се създаде файлът на базата се отговаря с `yes`.
 `--seed` добавя примерни данни: 6 членове (сред тях Петър Петров, petar@abv.bg), 3 задачи и тестов потребител.
 
 ### 6. Стартиране
@@ -103,9 +110,12 @@ cd testLekcia
 composer install
 copy .env.example .env
 php artisan key:generate
+type nul > database\database.sqlite
 php artisan migrate --seed
 php artisan serve
 ```
+
+(командите `copy` и `type nul` са за Windows - за Linux/macOS вижте стъпки 3 и 5)
 
 ---
 
@@ -279,6 +289,6 @@ tests/Feature/
 |---|---|
 | `No application encryption key has been specified` | `php artisan key:generate` |
 | `could not find driver` | разрешете `extension=pdo_sqlite` в `php.ini` |
-| `Database file at path [...] does not exist` | `php artisan migrate` и отговор `yes`, или създайте празен файл `database/database.sqlite` |
+| `Database file at path [...] does not exist` | създайте празен файл `database/database.sqlite` (стъпка 5) |
 | Съобщенията за грешка са на английски | проверете `APP_LOCALE=bg` в `.env` |
 | `'php' is not recognized...` | добавете `C:\xampp\php` в `PATH` |
