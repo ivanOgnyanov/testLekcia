@@ -38,7 +38,7 @@ php -m
 ### 1. Клониране на хранилището
 
 ```bash
-git clone https://github.com/<потребител>/testLekcia.git
+git clone https://github.com/ivanOgnyanov/testLekcia.git
 cd testLekcia
 ```
 
@@ -105,7 +105,7 @@ php artisan serve
 ### Накратко
 
 ```bash
-git clone https://github.com/<потребител>/testLekcia.git
+git clone https://github.com/ivanOgnyanov/testLekcia.git
 cd testLekcia
 composer install
 copy .env.example .env
